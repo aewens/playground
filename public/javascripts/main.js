@@ -14,47 +14,26 @@
     }
   });
 
-  require(["jquery", "firebase", "corejs", "modules/canvas", "modules/draw", "modules/database"], function(jQuery, Firebase, Core, mod_canvas, mod_draw, mod_database) {
+  require(["jquery", "firebase", "corejs", "modules/canvas", "modules/draw", "modules/database", "modules/dispatcher"], function(jQuery, Firebase, Core, mod_canvas, mod_draw, mod_database, mod_dispatcher) {
     Core.extend("$", jQuery);
-    Core.extend("db", Firebase);
+    Core.extend("db-api", Firebase);
     Core.register("main", function(sandbox) {
       return {
         init: function() {
-          var $, self;
+          var self;
           console.log("Starting main...");
-          $ = sandbox.use("$");
           self = this;
-          return $(document).ready(function() {
+          return sandbox.use("$")(document).ready(function() {
             Core.start("canvas");
             Core.start("draw");
             Core.start("database");
-            return $.get("javascripts/config.json", function(config) {
-              var db_time;
-              self.config = config;
-              sandbox.notify({
-                type: "db-setup",
-                data: {
-                  name: self.config.db
-                }
-              });
-              db_time = function() {
-                return sandbox.notify({
-                  type: "db-act",
-                  data: {
-                    mode: "push",
-                    location: "time",
-                    info: {
-                      now: Date.now()
-                    }
-                  }
-                });
-              };
-              return self.delay(db_time, 1000);
-            });
+            Core.start("dispatcher");
+            return sandbox.listen("config-data", self.configure);
           });
         },
-        delay: function(func, time) {
-          return setTimeout(func, time);
+        configure: function(config) {
+          this.config = config;
+          return console.log("Obtained config data...");
         },
         destroy: function() {
           return console.log("Stopping main...");

@@ -7,7 +7,7 @@
           return console.log("Starting _mod_...");
         },
         destroy: function() {
-          return console.log("Stoping _mod_...");
+          return console.log("Stopping _mod_...");
         }
       };
     });

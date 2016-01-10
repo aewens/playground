@@ -5,4 +5,4 @@ define [
         init: ->
             console.log "Starting _mod_..."
         destroy: ->
-            console.log "Stoping _mod_..."
+            console.log "Stopping _mod_..."

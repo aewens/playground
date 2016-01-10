@@ -13,7 +13,7 @@
           return this.ctx = canvas.getContext("2d");
         },
         destroy: function() {
-          return console.log("Stoping draw...");
+          return console.log("Stopping draw...");
         }
       };
     });

@@ -9,4 +9,4 @@ define [
 
             @ctx = canvas.getContext("2d")
         destroy: ->
-            console.log "Stoping draw..."
+            console.log "Stopping draw..."

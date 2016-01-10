@@ -5,14 +5,17 @@
       return {
         init: function() {
           console.log("Starting database...");
+          if (!sandbox.use("db-api")) {
+            this.destroy();
+          }
           sandbox.listen("db-setup", this.setup);
           return sandbox.listen("db-act", this.act);
         },
         setup: function(data) {
-          var db, self;
+          var api, self;
           console.log("Setting up database...");
-          db = sandbox.use("db");
-          this.db = new db(data.name);
+          api = sandbox.use("db-api");
+          this.db = new api(data.name);
           self = this;
           return this.db.on("value", function(snapshot) {
             return self.snapshot = snapshot;
@@ -21,7 +24,7 @@
         act: function(data) {
           var location;
           if (!this.db) {
-            console.log("Setup database first");
+            console.log("Setup database first!");
             return null;
           }
           console.log("Database is acting...");
@@ -40,7 +43,7 @@
           }
         },
         destroy: function() {
-          return console.log("Stoping database...");
+          return console.log("Stopping database...");
         }
       };
     });

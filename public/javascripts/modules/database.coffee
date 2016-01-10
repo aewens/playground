@@ -4,20 +4,22 @@ define [
     Core.register "database", (sandbox) ->
         init: ->
             console.log "Starting database..."
+            @destroy() unless sandbox.use("db-api")
+
             sandbox.listen("db-setup", @setup)
             sandbox.listen("db-act", @act)
         # name : String/URL
         setup: (data) ->
             console.log "Setting up database..."
-            db = sandbox.use("db")
-            @db = new db(data.name)
+            api = sandbox.use("db-api")
+            @db = new api(data.name)
             self = @
             @db.on "value", (snapshot) ->
                 self.snapshot = snapshot
         # mode : String, location : String, info : Object
         act: (data) ->
             unless !!@db
-                console.log "Setup database first"
+                console.log "Setup database first!"
                 return null
             console.log "Database is acting..."
             location = @db.child(data.location)
@@ -28,4 +30,4 @@ define [
                 when "remove" then location.remove()
                 else location.push(data.info)
         destroy: ->
-            console.log "Stoping database..."
+            console.log "Stopping database..."

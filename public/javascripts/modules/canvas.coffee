@@ -10,5 +10,5 @@ define [
             @$c.css("width", width)
             @$c.css("height", height)
         destroy: ->
-            console.log "Stoping canvas..."
+            console.log "Stopping canvas..."
             @$c.remove() if @$c

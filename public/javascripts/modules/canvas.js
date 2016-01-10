@@ -13,7 +13,7 @@
           return this.$c.css("height", height);
         },
         destroy: function() {
-          console.log("Stoping canvas...");
+          console.log("Stopping canvas...");
           if (this.$c) {
             return this.$c.remove();
           }
