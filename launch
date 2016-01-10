@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+coffee -wc . &
+nodemon app.js
+# supervisor -w . -x node app.js

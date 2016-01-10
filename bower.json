@@ -1,0 +1,10 @@
+{
+    "name": "nodejs-workflow",
+    "version": "0.0.1",
+    "dependencies": {
+        "bootstrap": null,
+        "jquery": null,
+        "requirejs": null,
+        "firebase": null
+    }
+}
