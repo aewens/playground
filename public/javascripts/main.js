@@ -4,7 +4,7 @@
     urlArgs: "nocache=" + (new Date).getTime(),
     paths: {
       "jquery": "../vendor/jquery/dist/jquery.min",
-      "corejs": "../vendor/corejs/core.min",
+      "corejs": "../vendor/core_js/dist/core.min",
       "firebase": "../vendor/firebase/firebase"
     },
     shim: {
