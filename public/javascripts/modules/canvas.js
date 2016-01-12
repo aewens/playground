@@ -4,13 +4,16 @@
     return Core.register("canvas", function(sandbox) {
       return {
         init: function() {
-          var height, width;
+          var $root, c, height, width;
           console.log("Starting canvas...");
-          this.$c = sandbox.use("$")("canvas");
+          $root = sandbox.use("$")(this.el);
+          c = document.createElement("canvas");
+          this.$c = sandbox.use("$")(c);
           width = window.innerWidth;
           height = window.innerHeight;
           this.$c.css("width", width);
-          return this.$c.css("height", height);
+          this.$c.css("height", height);
+          return $root.append(c);
         },
         destroy: function() {
           console.log("Stopping canvas...");
