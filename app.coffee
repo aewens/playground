@@ -44,4 +44,4 @@ app.use (req, res, next) ->
 
 #Launch
 app.listen 8123
-console.log "Node @ http:#localhost:8123...\n"
+console.log "Node @ http://localhost:8123...\n"
