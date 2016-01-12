@@ -8,7 +8,10 @@
     "dependencies": {
         "express": "3.4.0",
         "jade": "*",
-        "stylus": "*"
+        "stylus": "*",
+        "nodemon": "*",
+        "coffee-script": "*",
+        "bower": "*"
     },
     "engines": {
         "node": "0.10.x",
