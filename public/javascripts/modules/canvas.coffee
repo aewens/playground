@@ -10,6 +10,15 @@ define [
             @$c = sandbox.use("$")(c)
             width = window.innerWidth
             height = window.innerHeight
+            h = width / 16 * 9
+            w = height * 16 / 9
+            
+            # if height > h
+            #     @$c.css("width", width)
+            #     @$c.css("height", h)
+            # else if width > w
+            #     @$c.css("width", w)
+            #     @$c.css("height", height)
             @$c.css("width", width)
             @$c.css("height", height)
             $root.append(c)

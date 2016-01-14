@@ -4,13 +4,15 @@
     return Core.register("canvas", function(sandbox) {
       return {
         init: function() {
-          var $root, c, height, width;
+          var $root, c, h, height, w, width;
           console.log("Starting canvas...");
           $root = sandbox.use("$")(this.el);
           c = document.createElement("canvas");
           this.$c = sandbox.use("$")(c);
           width = window.innerWidth;
           height = window.innerHeight;
+          h = width / 16 * 9;
+          w = height * 16 / 9;
           this.$c.css("width", width);
           this.$c.css("height", height);
           return $root.append(c);
