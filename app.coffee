@@ -43,5 +43,6 @@ app.use (req, res, next) ->
   res.type("txt").send "Not found"
 
 #Launch
-app.listen 8123
-console.log "Node @ http://localhost:8123...\n"
+port = process.env.C9_PORT || 8123
+app.listen port
+console.log "Node @ http://localhost:#{port}...\n"
