@@ -10,17 +10,16 @@ define [
             @$c = sandbox.use("$")(c)
             width = window.innerWidth
             height = window.innerHeight
-            h = width / 16 * 9
-            w = height * 16 / 9
-            
-            # if height > h
-            #     @$c.css("width", width)
-            #     @$c.css("height", h)
-            # else if width > w
-            #     @$c.css("width", w)
-            #     @$c.css("height", height)
-            @$c.css("width", width)
-            @$c.css("height", height)
+            rw = Math.floor(Math.log(width) / Math.log(2))
+            rh = Math.floor(Math.log(height) / Math.log(2))
+            w = Math.pow(2, rw)
+            h = Math.pow(2, rh)
+            lr = (width - w) / 2
+            tb = (height - h) / 2
+            # console.log w / rw, h / rh
+            @$c.css("width", w)
+            @$c.css("height", h)
+            @$c.css("margin", "#{tb}px #{lr}px")
             $root.append(c)
         destroy: ->
             console.log "Stopping canvas..."

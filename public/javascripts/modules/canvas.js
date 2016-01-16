@@ -4,17 +4,22 @@
     return Core.register("canvas", function(sandbox) {
       return {
         init: function() {
-          var $root, c, h, height, w, width;
+          var $root, c, h, height, lr, rh, rw, tb, w, width;
           console.log("Starting canvas...");
           $root = sandbox.use("$")(this.el);
           c = document.createElement("canvas");
           this.$c = sandbox.use("$")(c);
           width = window.innerWidth;
           height = window.innerHeight;
-          h = width / 16 * 9;
-          w = height * 16 / 9;
-          this.$c.css("width", width);
-          this.$c.css("height", height);
+          rw = Math.floor(Math.log(width) / Math.log(2));
+          rh = Math.floor(Math.log(height) / Math.log(2));
+          w = Math.pow(2, rw);
+          h = Math.pow(2, rh);
+          lr = (width - w) / 2;
+          tb = (height - h) / 2;
+          this.$c.css("width", w);
+          this.$c.css("height", h);
+          this.$c.css("margin", tb + "px " + lr + "px");
           return $root.append(c);
         },
         destroy: function() {
