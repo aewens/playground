@@ -1,3 +1,4 @@
+dev = true
 #Module dependencies
 express  = require "express"
 stylus   = require "stylus"
@@ -43,6 +44,6 @@ app.use (req, res, next) ->
   res.type("txt").send "Not found"
 
 #Launch
-port = process.env.C9_PORT || 8123
+port = if dev then 8124 else 8123
 app.listen port
 console.log "Node @ http://localhost:#{port}...\n"
