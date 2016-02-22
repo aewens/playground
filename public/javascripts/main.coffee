@@ -1,5 +1,5 @@
 require.config
-    # urlArgs: "nocache=" + (new Date).getTime()
+    urlArgs: "nocache=" + (new Date).getTime()
     paths:
         "jquery": ["//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min", "../vendor/jquery/dist/jquery.min"]
         "corejs": "../vendor/core_js/dist/core.min"
