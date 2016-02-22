@@ -4,22 +4,32 @@ require.config
         "jquery": "../vendor/jquery/dist/jquery.min"
         "corejs": "../vendor/core_js/dist/core.min"
         "firebase": "../vendor/firebase/firebase"
+        "angular":  "../vendor/angular/angular.min"
+        "hammerjs": "../vendor/Materialize/js/hammer.min" # Materialize dep
+        "material": "../vendor/Materialize/bin/materialize"
     shim:
         "firebase":
             exports: "Firebase"
+        "angular":
+            deps: ["jquery"]
+            exports: "angular"
+        "material":
+            deps: ["jquery", "hammerjs"]
 
 require [
     "jquery",
     "firebase",
     "corejs",
-    "modules/canvas",
-    "modules/draw",
+    "angular",
+    "material",
     "modules/database",
     "modules/dispatcher"
-], (jQuery, Firebase, Core, mod_canvas,
-    mod_draw, mod_database, mod_dispatcher) ->
+], (jQuery, Firebase, Core, Angular, Material,
+    mod_database, mod_dispatcher) ->
     Core.extend("$", jQuery)
     Core.extend("db-api", Firebase)
+    Core.extend("angular", Angular)
+    Core.extend("material", Material)
     Core.register "main", (sandbox) ->
         init: ->
             console.log "Starting main..."
@@ -28,8 +38,6 @@ require [
             # Use self instead
             sandbox.use("$")(document).ready ->
                 # Start cores here
-                Core.start("canvas")
-                Core.start("draw")
                 Core.start("database")
                 Core.start("dispatcher")
 

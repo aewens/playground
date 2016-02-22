@@ -1,4 +1,4 @@
-title = "playground"
+title = "Cloud"
 
 exports.index = (req, res) ->
     res.render "index", { title : title }

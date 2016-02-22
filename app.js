@@ -2,7 +2,7 @@
 (function() {
   var app, compile, dev, express, port, route, stylus;
 
-  dev = true;
+  dev = !true;
 
   express = require("express");
 

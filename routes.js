@@ -2,7 +2,7 @@
 (function() {
   var title;
 
-  title = "playground";
+  title = "Cloud";
 
   exports.index = function(req, res) {
     return res.render("index", {

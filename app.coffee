@@ -1,4 +1,4 @@
-dev = true
+dev = !true
 #Module dependencies
 express  = require "express"
 stylus   = require "stylus"

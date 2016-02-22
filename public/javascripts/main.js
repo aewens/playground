@@ -5,18 +5,30 @@
     paths: {
       "jquery": "../vendor/jquery/dist/jquery.min",
       "corejs": "../vendor/core_js/dist/core.min",
-      "firebase": "../vendor/firebase/firebase"
+      "firebase": "../vendor/firebase/firebase",
+      "angular": "../vendor/angular/angular.min",
+      "hammerjs": "../vendor/Materialize/js/hammer.min",
+      "material": "../vendor/Materialize/bin/materialize"
     },
     shim: {
       "firebase": {
         exports: "Firebase"
+      },
+      "angular": {
+        deps: ["jquery"],
+        exports: "angular"
+      },
+      "material": {
+        deps: ["jquery", "hammerjs"]
       }
     }
   });
 
-  require(["jquery", "firebase", "corejs", "modules/canvas", "modules/draw", "modules/database", "modules/dispatcher"], function(jQuery, Firebase, Core, mod_canvas, mod_draw, mod_database, mod_dispatcher) {
+  require(["jquery", "firebase", "corejs", "angular", "material", "modules/database", "modules/dispatcher"], function(jQuery, Firebase, Core, Angular, Material, mod_database, mod_dispatcher) {
     Core.extend("$", jQuery);
     Core.extend("db-api", Firebase);
+    Core.extend("angular", Angular);
+    Core.extend("material", Material);
     Core.register("main", function(sandbox) {
       return {
         init: function() {
@@ -24,8 +36,6 @@
           console.log("Starting main...");
           self = this;
           return sandbox.use("$")(document).ready(function() {
-            Core.start("canvas");
-            Core.start("draw");
             Core.start("database");
             Core.start("dispatcher");
             return sandbox.listen("config-data", self.configure);
