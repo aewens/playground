@@ -7,6 +7,7 @@
       "corejs": "../vendor/core_js/dist/core.min",
       "firebase": "../vendor/firebase/firebase",
       "angular": "../vendor/angular/angular.min",
+      "ng-route": "../vendor/angular-route/angular-route.min",
       "hammerjs": "../vendor/Materialize/js/hammer.min",
       "material": "../vendor/Materialize/bin/materialize"
     },
@@ -15,8 +16,10 @@
         exports: "Firebase"
       },
       "angular": {
-        deps: ["jquery"],
         exports: "angular"
+      },
+      "ng-route": {
+        deps: ["angular"]
       },
       "material": {
         deps: ["jquery", "hammerjs"]
@@ -24,7 +27,7 @@
     }
   });
 
-  require(["jquery", "firebase", "corejs", "angular", "material", "modules/database", "modules/dispatcher"], function(jQuery, Firebase, Core, Angular, Material, mod_database, mod_dispatcher) {
+  require(["jquery", "firebase", "corejs", "angular", "material", "modules/database", "modules/dispatcher", "modules/angular-test"], function(jQuery, Firebase, Core, Angular, Material, mod_database, mod_dispatcher, mod_angular_test) {
     Core.extend("$", jQuery);
     Core.extend("db-api", Firebase);
     Core.extend("angular", Angular);
@@ -38,6 +41,7 @@
           return sandbox.use("$")(document).ready(function() {
             Core.start("database");
             Core.start("dispatcher");
+            Core.start("angular-test");
             return sandbox.listen("config-data", self.configure);
           });
         },

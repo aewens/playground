@@ -1,4 +1,20 @@
 extends layout
 
 block app
-    
+    #angular-test.container
+        form.col.s12(ng-controller="TestCtrl")
+            .row
+                h2 {{ name }}
+            .row
+                .input-field.col.s6
+                    input(type="text", ng-model="fname", id="fname", value="{{fname}}")
+                    label(for="fname") First Name
+                .input-field.col.s6
+                    input(type="text", ng-model="lname", id="lname", value="{{lname}}")
+                    label(for="lname") Last Name
+            .row
+                a.waves-effect.waves-light.btn.col.s12(ng-click="updateName()")
+                    | Update Name
+            .row
+                p Preview: 
+                    strong {{ fname }} {{ lname }}
