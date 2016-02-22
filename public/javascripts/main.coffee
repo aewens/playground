@@ -1,13 +1,13 @@
 require.config
     urlArgs: "nocache=" + (new Date).getTime()
     paths:
-        "jquery": "../vendor/jquery/dist/jquery.min"
+        "jquery": ["//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min", "../vendor/jquery/dist/jquery.min"]
         "corejs": "../vendor/core_js/dist/core.min"
-        "firebase": "../vendor/firebase/firebase"
-        "angular":  "../vendor/angular/angular.min"
-        "ng-route": "../vendor/angular-route/angular-route.min"
+        "firebase": ["//cdn.firebase.com/js/client/2.4.1/firebase", "../vendor/firebase/firebase"]
+        "angular":  ["//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min" ,"../vendor/angular/angular.min"]
+        "ng-route": ["//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min", "../vendor/angular-route/angular-route.min"]
         "hammerjs": "../vendor/Materialize/js/hammer.min" # Materialize dep
-        "material": "../vendor/Materialize/bin/materialize"
+        "material": ["//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min" ,"../vendor/Materialize/bin/materialize"]
     shim:
         "firebase":
             exports: "Firebase"

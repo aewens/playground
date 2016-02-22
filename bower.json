@@ -5,9 +5,9 @@
         "jquery": null,
         "requirejs": null,
         "firebase": null,
-        "core_js": null
-	"angular": "1.5.0",
-	"angular-route": null,
-	"materialize": null
+        "core_js": null,
+        "angular": "1.5.0",
+        "angular-route": null,
+        "materialize": null
     }
 }
