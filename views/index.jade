@@ -1,6 +1,15 @@
 extends layout
 
 block app
+    nav
+        .nav-wrapper
+            a.brand-logo(href="#") Cloud
+            ul#nav-mobile.right.hide-on-med-and-down
+                li
+                    a(href="#") Ng-Name
+                li
+                    a(href="#") Ng-Test
+            
     #hide.container.center
         .preloader-wrapper.big.active
             .spinner-layer.spinner-blue-only
@@ -10,8 +19,8 @@ block app
                     .circle
                 .circle-clipper.right
                     .circle
-    #angular-test.container.delay
-        form.col.s12(ng-controller="TestCtrl")
+    #angular-name.container.ng-cloak
+        form.col.s12(ng-controller="NameCtrl")
             .row
                 h2 {{ name }}
             .row

@@ -27,7 +27,7 @@
     }
   });
 
-  require(["jquery", "firebase", "corejs", "angular", "material", "modules/database", "modules/dispatcher", "modules/angular-test"], function(jQuery, Firebase, Core, Angular, Material, mod_database, mod_dispatcher, mod_angular_test) {
+  require(["jquery", "firebase", "corejs", "angular", "material", "modules/database", "modules/dispatcher", "modules/angular-name"], function(jQuery, Firebase, Core, Angular, Material, mod_database, mod_dispatcher, mod_angular_name) {
     Core.extend("$", jQuery);
     Core.extend("db-api", Firebase);
     Core.extend("angular", Angular);
@@ -42,9 +42,9 @@
           return $(document).ready(function() {
             Core.start("database");
             Core.start("dispatcher");
-            Core.start("angular-test");
+            Core.start("angular-name");
             $("#hide").hide(function() {
-              return $(".delay").show();
+              return $(".ng-cloak").show();
             });
             return sandbox.listen("config-data", self.configure);
           });
