@@ -17,6 +17,6 @@ define [
                 $scope.updateName = ->
                     $scope.name = $scope.fname + " " + $scope.lname
 
-            angular.bootstrap(document, ["angular-test"])
+            angular.bootstrap(@el, ["angular-test"])
         destroy: ->
             console.log "Stopping angular-test..."

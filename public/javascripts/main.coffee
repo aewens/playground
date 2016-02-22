@@ -45,7 +45,7 @@ require [
                 Core.start("database")
                 Core.start("dispatcher")
                 Core.start("angular-test")
-                $(".delay").show()
+                $("#hide").hide -> $(".delay").show() 
 
                 # Get config data from dispatcher module
                 sandbox.listen("config-data", self.configure)

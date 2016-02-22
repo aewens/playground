@@ -1,6 +1,15 @@
 extends layout
 
 block app
+    #hide.container.center
+        .preloader-wrapper.big.active
+            .spinner-layer.spinner-blue-only
+                .circle-clipper.left
+                    .circle
+                .gap-patch
+                    .circle
+                .circle-clipper.right
+                    .circle
     #angular-test.container.delay
         form.col.s12(ng-controller="TestCtrl")
             .row

@@ -43,7 +43,9 @@
             Core.start("database");
             Core.start("dispatcher");
             Core.start("angular-test");
-            $(".delay").show();
+            $("#hide").hide(function() {
+              return $(".delay").show();
+            });
             return sandbox.listen("config-data", self.configure);
           });
         },

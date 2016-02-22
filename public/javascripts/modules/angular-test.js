@@ -19,7 +19,7 @@
               return $scope.name = $scope.fname + " " + $scope.lname;
             };
           });
-          return angular.bootstrap(document, ["angular-test"]);
+          return angular.bootstrap(this.el, ["angular-test"]);
         },
         destroy: function() {
           return console.log("Stopping angular-test...");
