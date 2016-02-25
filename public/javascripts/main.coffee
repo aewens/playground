@@ -26,9 +26,9 @@ require [
     "material",
     "modules/database",
     "modules/dispatcher",
-    "modules/angular-name"
+    "modules/angular-learn"
 ], (jQuery, Firebase, Core, Angular, Material,
-    mod_database, mod_dispatcher, mod_angular_name) ->
+    mod_database, mod_dispatcher, mod_angular_learn) ->
     Core.extend("$", jQuery)
     Core.extend("db-api", Firebase)
     Core.extend("angular", Angular)
@@ -44,8 +44,10 @@ require [
                 # Start cores here
                 Core.start("database")
                 Core.start("dispatcher")
-                Core.start("angular-name")
-                $("#hide").hide -> $(".ng-cloak").show()
+                Core.start("angular-learn")
+                $("#hide").hide -> 
+                    $(".load").show()
+                    $(".button-collapse").sideNav()
 
                 # Get config data from dispatcher module
                 sandbox.listen("config-data", self.configure)

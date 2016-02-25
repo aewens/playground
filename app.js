@@ -55,7 +55,7 @@
 
   port = dev ? 8124 : 8123;
 
-  app.listen(port);
+  app.listen(process.env.PORT || port);
 
   console.log("Node @ http://localhost:" + port + "...\n");
 

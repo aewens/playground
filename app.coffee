@@ -45,5 +45,5 @@ app.use (req, res, next) ->
 
 #Launch
 port = if dev then 8124 else 8123
-app.listen port
+app.listen process.env.PORT || port
 console.log "Node @ http://localhost:#{port}...\n"

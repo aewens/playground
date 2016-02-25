@@ -4,11 +4,18 @@ block app
     nav
         .nav-wrapper.blue-grey
             a.brand-logo(href="#") Cloud
+            a.button-collapse(href="#", data-activates="mobile-menu")
+                i.material-icons menu
             ul#nav-mobile.right.hide-on-med-and-down
                 li
-                    a(href="#") Ng-Name
+                    a(href="#") Angular
                 li
-                    a(href="#") Ng-Test
+                    a(href="#") Other
+            ul#mobile-menu.side-nav
+                li
+                    a(href="#") Angular
+                li
+                    a(href="#") Other
             
     #hide.container.center
         .preloader-wrapper.big.active
@@ -19,20 +26,27 @@ block app
                     .circle
                 .circle-clipper.right
                     .circle
-    #angular-name.container.ng-cloak
-        form.col.s12(ng-controller="NameCtrl")
+    #angular-name.container.load
+        form.col.s12.card-panel(ng-controller="NameCtrl")
             .row
-                h2 {{ name }}
+                h2 {{ data.name }}
             .row
                 .input-field.col.s6
-                    input(type="text", ng-model="fname", id="fname", value="{{fname}}")
+                    input(type="text", ng-model="data.fname", id="fname", value="{{data.fname}}")
                     label(for="fname") First Name
                 .input-field.col.s6
-                    input(type="text", ng-model="lname", id="lname", value="{{lname}}")
+                    input(type="text", ng-model="data.lname", id="lname", value="{{data.lname}}")
                     label(for="lname") Last Name
             .row
                 a.waves-effect.waves-light.btn.col.s12.blue-grey(ng-click="updateName()")
                     | Update Name
             .row
                 p Preview: 
-                    strong {{ fname }} {{ lname }}
+                    strong {{ data.fname }} {{ data.lname }}
+    #angular-reverse.container.load
+        form.col.s12.card-panel(ng-controller="ReverseCtrl")
+            .row
+                h2 {{ data.name.split(" ").reverse().join(", ") }}
+            .row
+                p Flipped: 
+                    strong {{ data.lname }}, {{ data.fname }}
