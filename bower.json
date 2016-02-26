@@ -1,13 +1,13 @@
 {
-    "name": "nodejs-workflow",
-    "version": "0.0.1",
-    "dependencies": {
-        "jquery": null,
-        "requirejs": null,
-        "firebase": null,
-        "core_js": null,
-        "angular": "1.5.0",
-        "angular-route": null,
-        "materialize": null
-    }
+  "name": "nodejs-workflow",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": null,
+    "requirejs": null,
+    "firebase": null,
+    "core_js": null,
+    "angular": "1.5.0",
+    "angular-route": null,
+    "material-design-lite": "~1.1.1"
+  }
 }
