@@ -7,7 +7,7 @@
     "firebase": null,
     "core_js": null,
     "angular": "1.5.0",
-    "angular-route": null,
-    "material-design-lite": "~1.1.1"
+    "angular-route": "1.5.0",
+    "bootstrap": null
   }
 }

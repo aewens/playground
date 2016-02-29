@@ -1,22 +1,32 @@
 extends layout
 
 block app
-    #hide.mdl-spinner.mdl-js-spinner.is-active
-    #angular-name.load
-        form(ng-controller="NameCtrl")
+    .container
+        .page-header
+            h1 Cloud
+        .jumbotron
+            h1 Welcome to the Arch Cloud!
+            p 
+                | Brought to you by my beloved server, 
+                em Frankenstein
+                | , the machine made from the parts of other machines. 
+                | This service is born from the byproduct of boredom and 
+                | the constant desire to be programming. I hope you enjoy it!
+            em - Austin Ewens 
+        
+        #ng-wait
+        form.ng-load.well(ng-controller="NameCtrl")
             h2 {{ data.name }}
-            .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-                input.mdl-textfield__input(type="text", ng-model="data.fname", id="fname", value="{{data.fname}}")
-                label.mdl-textfield__label(for="fname") First Name
-                
-            .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-                input.mdl-textfield__input(type="text", ng-model="data.lname", id="lname", value="{{data.lname}}")
-                label.mdl-textfield__label(for="lname") Last Name
-            button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect(ng-click="updateName()") Update Name
+            .row
+                .form-group.col-md-5
+                    input.form-control(type="text", ng-model="data.fname", id="fname", value="{{data.fname}}")
+                .form-group.col-md-5
+                    input.form-control(type="text", ng-model="data.lname", id="lname", value="{{data.lname}}")
+                .form-group.col-md-2
+                    a.btn.btn-default(ng-click="updateName()") Update Name
             p Preview: 
                 strong {{ data.fname }} {{ data.lname }}
-    #angular-reverse.load
-        form(ng-controller="ReverseCtrl")
+        form.ng-load.well(ng-controller="ReverseCtrl")
             h2 {{ data.name.split(" ").reverse().join(", ") }}
             p Flipped: 
                 strong {{ data.lname }}, {{ data.fname }}
