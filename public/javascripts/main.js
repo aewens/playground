@@ -19,6 +19,9 @@
       },
       "ng-route": {
         deps: ["angular"]
+      },
+      "bootstrap": {
+        deps: ["jquery"]
       }
     }
   });

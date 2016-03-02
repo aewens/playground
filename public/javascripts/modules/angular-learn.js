@@ -18,11 +18,6 @@
               name: "Austin Ewens"
             };
           });
-          app.filter("reverse", function() {
-            return function(text) {
-              return text.split("").reverse().join("");
-            };
-          });
           app.controller("NameCtrl", function($scope, Data) {
             $scope.data = Data;
             return $scope.updateName = function() {
@@ -36,6 +31,60 @@
             return $scope.flipNames = function() {
               return $scope.data.name.split(" ").reverse().join(", ");
             };
+          });
+          app.filter("reverse", function() {
+            return function(text) {
+              return text.split("").reverse().join("");
+            };
+          });
+          app.factory("Frameworks", function() {
+            return {
+              web: [
+                {
+                  name: "require",
+                  lang: "js"
+                }, {
+                  name: "core",
+                  lang: "js"
+                }, {
+                  name: "firebase",
+                  lang: "js"
+                }, {
+                  name: "bootstrap",
+                  lang: "css"
+                }, {
+                  name: "angular",
+                  lang: "js"
+                }, {
+                  name: "jquery",
+                  lang: "js"
+                }, {
+                  name: "rails",
+                  lang: "ruby"
+                }, {
+                  name: "jekyll",
+                  lang: "ruby"
+                }, {
+                  name: "django",
+                  lang: "py"
+                }, {
+                  name: "node",
+                  lang: "js"
+                }, {
+                  name: "flask",
+                  lang: "py"
+                }, {
+                  name: "express",
+                  lang: "js"
+                }, {
+                  name: "sinatra",
+                  lang: "ruby"
+                }
+              ]
+            };
+          });
+          app.controller("FrameworkCtrl", function($scope, Frameworks) {
+            return $scope.frameworks = Frameworks;
           });
           return angular.bootstrap(document, ["angular-learn"]);
         },

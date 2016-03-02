@@ -14,6 +14,8 @@ require.config
             exports: "angular"
         "ng-route":
             deps: ["angular"]
+        "bootstrap":
+            deps: ["jquery"]
 
 require [
     "jquery",

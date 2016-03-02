@@ -14,9 +14,6 @@ define [
                 lname: "Ewens"
                 name: "Austin Ewens"
 
-            app.filter "reverse", -> (text) ->
-                 text.split("").reverse().join("")
-
             app.controller "NameCtrl", ($scope, Data) ->
                 $scope.data = Data
 
@@ -28,6 +25,69 @@ define [
                 $scope.data = Data
                 $scope.flipNames = ->
                     $scope.data.name.split(" ").reverse().join(", ")
+
+            app.filter "reverse", -> (text) ->
+                 text.split("").reverse().join("")
+
+            app.factory "Frameworks", ->
+                web: [
+                    {
+                        name: "require"
+                        lang: "js"
+                    }
+                    {
+                        name: "core"
+                        lang: "js"
+                    }
+                    {
+                        name: "firebase"
+                        lang: "js"
+                    }
+                    {
+                        name: "bootstrap"
+                        lang: "css"
+                    }
+                    {
+                        name: "angular"
+                        lang: "js"
+                    }
+                    {
+                        name: "jquery"
+                        lang: "js"
+                    }
+                    {
+                        name: "rails"
+                        lang: "ruby"
+                    }
+                    {
+                        name: "jekyll"
+                        lang: "ruby"
+                    }
+                    {
+                        name: "django"
+                        lang: "py"
+                    }
+                    {
+                        name: "node"
+                        lang: "js"
+                    }
+                    {
+                        name: "flask"
+                        lang: "py"
+                    }
+                    {
+                        name: "express"
+                        lang: "js"
+                    }
+                    {
+                        name: "sinatra"
+                        lang: "ruby"
+                    }
+                ]
+
+            app.controller "FrameworkCtrl", ($scope, Frameworks) ->
+                $scope.frameworks = Frameworks
+                
 
             angular.bootstrap(document, ["angular-learn"])
         destroy: ->
