@@ -14,6 +14,9 @@ define [
                 lname: "Ewens"
                 name: "Austin Ewens"
 
+            app.filter "reverse", -> (text) ->
+                 text.split("").reverse().join("")
+
             app.controller "NameCtrl", ($scope, Data) ->
                 $scope.data = Data
 
@@ -21,8 +24,10 @@ define [
                     name = $scope.data.fname + " " + $scope.data.lname
                     $scope.data.name = name
 
-            app.controller "ReverseCtrl", ($scope, Data) ->
+            app.controller "FlipCtrl", ($scope, Data) ->
                 $scope.data = Data
+                $scope.flipNames = ->
+                    $scope.data.name.split(" ").reverse().join(", ")
 
             angular.bootstrap(document, ["angular-learn"])
         destroy: ->

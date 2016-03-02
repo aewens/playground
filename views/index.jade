@@ -15,18 +15,19 @@ block app
             em - Austin Ewens 
         
         #ng-wait
-        form.ng-load.well(ng-controller="NameCtrl")
-            h2 {{ data.name }}
-            .row
-                .form-group.col-md-5
-                    input.form-control(type="text", ng-model="data.fname", id="fname", value="{{data.fname}}")
-                .form-group.col-md-5
-                    input.form-control(type="text", ng-model="data.lname", id="lname", value="{{data.lname}}")
-                .form-group.col-md-2
-                    a.btn.btn-default(ng-click="updateName()") Update Name
-            p Preview: 
-                strong {{ data.fname }} {{ data.lname }}
-        form.ng-load.well(ng-controller="ReverseCtrl")
-            h2 {{ data.name.split(" ").reverse().join(", ") }}
-            p Flipped: 
-                strong {{ data.lname }}, {{ data.fname }}
+        .ng-load
+            form.well(ng-controller="NameCtrl")
+                h2 {{ data.name }}
+                .row
+                    .form-group.col-md-5
+                        input.form-control(type="text", ng-model="data.fname", id="fname", value="{{data.fname}}")
+                    .form-group.col-md-5
+                        input.form-control(type="text", ng-model="data.lname", id="lname", value="{{data.lname}}")
+                    .form-group.col-md-2
+                        a.btn.btn-default(ng-click="updateName()") Update Name
+                p Preview: 
+                    strong {{ data.fname }} {{ data.lname }}
+            .well(ng-controller="FlipCtrl")
+                h2 {{ flipNames()|reverse }}
+                p Flipped: 
+                    strong {{ data.fname|reverse }} ,{{ data.lname|reverse }}

@@ -18,6 +18,11 @@
               name: "Austin Ewens"
             };
           });
+          app.filter("reverse", function() {
+            return function(text) {
+              return text.split("").reverse().join("");
+            };
+          });
           app.controller("NameCtrl", function($scope, Data) {
             $scope.data = Data;
             return $scope.updateName = function() {
@@ -26,8 +31,11 @@
               return $scope.data.name = name;
             };
           });
-          app.controller("ReverseCtrl", function($scope, Data) {
-            return $scope.data = Data;
+          app.controller("FlipCtrl", function($scope, Data) {
+            $scope.data = Data;
+            return $scope.flipNames = function() {
+              return $scope.data.name.split(" ").reverse().join(", ");
+            };
           });
           return angular.bootstrap(document, ["angular-learn"]);
         },
