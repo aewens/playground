@@ -86,6 +86,31 @@
           app.controller("FrameworkCtrl", function($scope, Frameworks) {
             return $scope.frameworks = Frameworks;
           });
+          app.directive("dync", function() {
+            return {
+              restrict: "C",
+              link: function(scope, element) {
+                var well;
+                well = "<div class='well'></div>";
+                return element.wrap(well);
+              }
+            };
+          });
+          app.directive("dyna", function() {
+            return function(scope, element) {
+              var html, media, mediaBody, mediaFace, mediaHead, mediaLeft, mediaText, name, text;
+              name = element.attr("data-name");
+              text = element.attr("data-text");
+              html = element.html();
+              mediaFace = "<span class='glyphicon glyphicon-user'></span>";
+              mediaLeft = "<div class='media-left'>" + mediaFace + "</div>";
+              mediaHead = "<h4 class='media-heading'>" + name + "</h4>";
+              mediaText = "<p>" + text + "</p>";
+              mediaBody = "<div class='media-body'> " + mediaHead + mediaText + html + "</div>";
+              media = "" + mediaLeft + mediaBody;
+              return element.html(media);
+            };
+          });
           return angular.bootstrap(document, ["angular-learn"]);
         },
         destroy: function() {

@@ -87,7 +87,26 @@ define [
 
             app.controller "FrameworkCtrl", ($scope, Frameworks) ->
                 $scope.frameworks = Frameworks
-                
+
+            app.directive "dync", ->
+                restrict: "C"
+                link: (scope, element) ->
+                    well = "<div class='well'></div>"
+                    element.wrap(well)
+
+            app.directive "dyna", ->
+                (scope, element) ->
+                    name = element.attr("data-name")
+                    text = element.attr("data-text")
+                    html = element.html()
+                    mediaFace = "<span class='glyphicon glyphicon-user'></span>"
+                    mediaLeft = "<div class='media-left'>#{mediaFace}</div>"
+                    mediaHead = "<h4 class='media-heading'>#{name}</h4>"
+                    mediaText = "<p>#{text}</p>"
+                    mediaBody = "<div class='media-body'>
+                                #{mediaHead}#{mediaText}#{html}</div>"
+                    media = "#{mediaLeft}#{mediaBody}"
+                    element.html(media)
 
             angular.bootstrap(document, ["angular-learn"])
         destroy: ->

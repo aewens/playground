@@ -45,3 +45,10 @@ block app
                         tr(ng-repeat="framework in frameworks.web | filter:searchText")
                             td {{ framework.name }}
                             td {{ framework.lang }}
+            .dync.media-list
+                .media(dyna, data-name="Anonymous", data-text="Test 1")
+                    .media(dyna, data-name="Anonymous", data-text="Test A")
+                        .media(dyna, data-name="Anonymous", data-text="Test a")
+                .media(dyna, data-name="Anonymous", data-text="Test 2")
+                    .media(dyna, data-name="Anonymous", data-text="Test B")
+                .media(dyna, data-name="Anonymous", data-text="Test 3")
