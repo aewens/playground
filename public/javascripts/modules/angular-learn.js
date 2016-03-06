@@ -97,10 +97,10 @@
             };
           });
           app.directive("dyna", function() {
-            return function(scope, element) {
+            return function(scope, element, attrs) {
               var html, media, mediaBody, mediaFace, mediaHead, mediaLeft, mediaText, name, text;
-              name = element.attr("data-name");
-              text = element.attr("data-text");
+              name = attrs.name;
+              text = attrs.text;
               html = element.html();
               mediaFace = "<span class='glyphicon glyphicon-user'></span>";
               mediaLeft = "<div class='media-left'>" + mediaFace + "</div>";

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 #fuser -k 8123/tcp
-coffee -wc . &
-nodemon app.js
+#coffee -wc . &
+nodemon app.js -e js,coffee
 # supervisor -w . -x node app.js

@@ -95,9 +95,9 @@ define [
                     element.wrap(well)
 
             app.directive "dyna", ->
-                (scope, element) ->
-                    name = element.attr("data-name")
-                    text = element.attr("data-text")
+                (scope, element, attrs) ->
+                    name = attrs.name
+                    text = attrs.text
                     html = element.html()
                     mediaFace = "<span class='glyphicon glyphicon-user'></span>"
                     mediaLeft = "<div class='media-left'>#{mediaFace}</div>"
