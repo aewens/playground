@@ -7,6 +7,7 @@ require.config
         "angular":  ["//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min" ,"../vendor/angular/angular.min"]
         "ng-route": ["//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min", "../vendor/angular-route/angular-route.min"]
         "bootstrap": ["//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min", "../vendor/bootstrap/dist/js/bootstrap.min"]
+        "ng-fire": "//cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min"
     shim:
         "firebase":
             exports: "Firebase"
@@ -14,6 +15,8 @@ require.config
             deps: ["jquery"]
             exports: "angular"
         "ng-route":
+            deps: ["angular"]
+        "ng-fire":
             deps: ["angular"]
         "bootstrap":
             deps: ["jquery"]

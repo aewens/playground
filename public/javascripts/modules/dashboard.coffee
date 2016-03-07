@@ -1,17 +1,23 @@
 define [
     "corejs",
-    "ng-route"
-], (Core, ng_route) ->
+    "ng-route",
+    "ng-fire"
+], (Core, ng_route, ng_fire) ->
     Core.register "dashboard", (sandbox) ->
         init: ->
             console.log "Starting dashboard..."
+
+            sandbox.listen("config-data", @runDashboard)
+        runDashboard: (data) ->
+            # Firebase href
+            href = data.config.db
 
             # Destroy if angular doesn't exist
             angular = sandbox.use("angular")
             @destroy() unless angular
 
             # Make the module
-            app = angular.module("dashboard", ["ngRoute"])
+            app = angular.module("dashboard", ["ngRoute", "firebase"])
 
             # Routes manager
             app.config ($routeProvider) ->
@@ -42,23 +48,13 @@ define [
                 .otherwise
                     templateUrl: "otherwise.html"
 
-            app.controller "DataTestCtrl", ($scope) ->
-                $scope.test = {}
-                cache = $("#cache").attr("data-entries")
-                $scope.test.entries = JSON.parse(cache) if cache
-                # Get data from database for table
-                fetchData = (data) ->
-                    # Tell angular to apply changes
-                    $scope.$apply ->
-                        # Get snapshot of database
-                        if data.snapshot
-                            # `api/test` is database location
-                            entries = data.snapshot.api.test
-                            # Send entries to scope
-                            $scope.test.entries = entries if entries
-                            jEntries = JSON.stringify(entries)
-                            $("#cache").attr("data-entries", jEntries)
-                sandbox.listen("db-ready", fetchData) unless cache
+            app.factory "testEntries", ($firebaseArray) ->
+                ref = new Firebase(href + "api/test")
+                $firebaseArray(ref)
+
+            app.controller "DataTestCtrl", ($scope, testEntries) ->
+                $scope.test =
+                    entries: testEntries
 
             # Bootstrap module to the document
             angular.bootstrap(document, ["dashboard"])

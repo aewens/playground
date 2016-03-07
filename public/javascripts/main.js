@@ -8,7 +8,8 @@
       "firebase": ["//cdn.firebase.com/js/client/2.4.1/firebase", "../vendor/firebase/firebase"],
       "angular": ["//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min", "../vendor/angular/angular.min"],
       "ng-route": ["//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min", "../vendor/angular-route/angular-route.min"],
-      "bootstrap": ["//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min", "../vendor/bootstrap/dist/js/bootstrap.min"]
+      "bootstrap": ["//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min", "../vendor/bootstrap/dist/js/bootstrap.min"],
+      "ng-fire": "//cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min"
     },
     shim: {
       "firebase": {
@@ -19,6 +20,9 @@
         exports: "angular"
       },
       "ng-route": {
+        deps: ["angular"]
+      },
+      "ng-fire": {
         deps: ["angular"]
       },
       "bootstrap": {
