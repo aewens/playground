@@ -1,6 +1,12 @@
 extends layout
 
 block app
+    script(type="text/ng-template", id="otherwise.html")
+        .panel.panel-info
+            .panel-heading Page not found!
+            .panel-body
+                span.glyphicon.glyphicon-link.middle
+                a.btn.btn-link(href="#/") Go to home &raquo;
     script(type="text/ng-template", id="dashboard.html")
         .jumbotron
             h1 Welcome to the Arch Cloud!
@@ -13,50 +19,62 @@ block app
             em - Austin Ewens 
         .col-sm-6.col-xs-12
             .well
-                span.h2
-                    | Module 1
+                h2.glyphicon.glyphicon-link.middle
+                span
                     a.btn.btn-link(href="#/mod1")
-                        span.glyphicon.glyphicon-link
+                        h2
+                            | Module 1 
+                            | &raquo;
                 p A thing that does stuff and whatever
         .col-sm-6.col-xs-12
             .well
-                span.h2
-                    | Module 2
+                h2.glyphicon.glyphicon-link.middle
+                span
                     a.btn.btn-link(href="#/mod2")
-                        span.glyphicon.glyphicon-link
+                        h2
+                            | Module 2 
+                            | &raquo;
                 p A thing that does stuff and whatever
         .col-sm-6.col-xs-12
             .well
-                span.h2
-                    | Module 3
+                h2.glyphicon.glyphicon-link.middle
+                span
                     a.btn.btn-link(href="#/mod3")
-                        span.glyphicon.glyphicon-link
+                        h2
+                            | Module 3 
+                            | &raquo;
                 p A thing that does stuff and whatever
         .col-sm-6.col-xs-12
             .well
-                span.h2
-                    | Module 4
+                h2.glyphicon.glyphicon-link.middle
+                span
                     a.btn.btn-link(href="#/mod4")
-                        span.glyphicon.glyphicon-link
+                        h2
+                            | Module 4 
+                            | &raquo;
                 p A thing that does stuff and whatever
         .col-sm-6.col-xs-12
             .well
-                span.h2
-                    | Module 5
+                h2.glyphicon.glyphicon-link.middle
+                span
                     a.btn.btn-link(href="#/mod5")
-                        span.glyphicon.glyphicon-link
+                        h2
+                            | Module 5 
+                            | &raquo;
                 p A thing that does stuff and whatever
         .col-sm-6.col-xs-12
             .well
-                span.h2
-                    | Module 6
-                    a.btn.btn-link(href="#/mod6")
-                        span.glyphicon.glyphicon-link
-                p A thing that does stuff and whatever
+                h2.glyphicon.glyphicon-link.middle
+                span
+                    a.btn.btn-link(href="#/error")
+                        h2
+                            | Otherwise
+                            | &raquo;
+                p To see how the otherwise page works
                 
     .container
         .page-header
             h1
-                span#cloud.glyphicon.glyphicon-cloud
+                span.glyphicon.glyphicon-cloud.middle
                 |  Arch Cloud
         ng-view

@@ -15,6 +15,8 @@
             return $routeProvider.when("/", {
               templateUrl: "dashboard.html",
               controller: "DashboardCtrl"
+            }).otherwise({
+              templateUrl: "otherwise.html"
             });
           });
           app.controller("DashboardCtrl", function($scope) {});
