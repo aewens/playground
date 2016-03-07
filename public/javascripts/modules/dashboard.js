@@ -13,13 +13,58 @@
           app = angular.module("dashboard", ["ngRoute"]);
           app.config(function($routeProvider) {
             return $routeProvider.when("/", {
-              templateUrl: "dashboard.html",
-              controller: "DashboardCtrl"
+              templateUrl: "dashboard.html"
+            }).when("/api/v0.1/test/:value", {
+              redirectTo: function(routeParams, path, search) {
+                var value, version;
+                value = routeParams.value;
+                version = path.split("/")[2];
+                sandbox.notify({
+                  type: "db-act",
+                  data: {
+                    mode: "push",
+                    location: "api/test",
+                    info: {
+                      value: routeParams.value,
+                      version: version,
+                      search: search
+                    }
+                  }
+                });
+                console.log(value, version, search);
+                return "/";
+              }
+            }).when("/data/test", {
+              templateUrl: "datatest.html",
+              controller: "DataTestCtrl"
             }).otherwise({
               templateUrl: "otherwise.html"
             });
           });
-          app.controller("DashboardCtrl", function($scope) {});
+          app.controller("DataTestCtrl", function($scope) {
+            var cache, fetchData;
+            $scope.test = {};
+            cache = $("#cache").attr("data-entries");
+            if (cache) {
+              $scope.test.entries = JSON.parse(cache);
+            }
+            fetchData = function(data) {
+              return $scope.$apply(function() {
+                var entries, jEntries;
+                if (data.snapshot) {
+                  entries = data.snapshot.api.test;
+                  if (entries) {
+                    $scope.test.entries = entries;
+                  }
+                  jEntries = JSON.stringify(entries);
+                  return $("#cache").attr("data-entries", jEntries);
+                }
+              });
+            };
+            if (!cache) {
+              return sandbox.listen("db-ready", fetchData);
+            }
+          });
           return angular.bootstrap(document, ["dashboard"]);
         },
         destroy: function() {

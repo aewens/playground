@@ -7,6 +7,19 @@ block app
             .panel-body
                 span.glyphicon.glyphicon-link.middle
                 a.btn.btn-link(href="#/") Go to home &raquo;
+    script(type="text/ng-template", id="datatest.html")
+        h1 Test Data
+        table.table
+            thead
+                tr
+                    th Value
+                    th Version
+                    th Search
+            tbody
+                tr#test-entries(ng-repeat="entry in test.entries")
+                    td {{ entry.value }}
+                    td {{ entry.version }}
+                    td {{ entry.search }}
     script(type="text/ng-template", id="dashboard.html")
         .jumbotron
             h1 Welcome to the Arch Cloud!
@@ -17,64 +30,36 @@ block app
                 | This service is born from the byproduct of boredom and 
                 | the constant desire to be programming. I hope you enjoy it!
             em - Austin Ewens 
-        .col-sm-6.col-xs-12
-            .well
-                h2.glyphicon.glyphicon-link.middle
-                span
-                    a.btn.btn-link(href="#/mod1")
-                        h2
-                            | Module 1 
-                            | &raquo;
-                p A thing that does stuff and whatever
-        .col-sm-6.col-xs-12
-            .well
-                h2.glyphicon.glyphicon-link.middle
-                span
-                    a.btn.btn-link(href="#/mod2")
-                        h2
-                            | Module 2 
-                            | &raquo;
-                p A thing that does stuff and whatever
-        .col-sm-6.col-xs-12
-            .well
-                h2.glyphicon.glyphicon-link.middle
-                span
-                    a.btn.btn-link(href="#/mod3")
-                        h2
-                            | Module 3 
-                            | &raquo;
-                p A thing that does stuff and whatever
-        .col-sm-6.col-xs-12
-            .well
-                h2.glyphicon.glyphicon-link.middle
-                span
-                    a.btn.btn-link(href="#/mod4")
-                        h2
-                            | Module 4 
-                            | &raquo;
-                p A thing that does stuff and whatever
-        .col-sm-6.col-xs-12
-            .well
-                h2.glyphicon.glyphicon-link.middle
-                span
-                    a.btn.btn-link(href="#/mod5")
-                        h2
-                            | Module 5 
-                            | &raquo;
-                p A thing that does stuff and whatever
-        .col-sm-6.col-xs-12
-            .well
-                h2.glyphicon.glyphicon-link.middle
-                span
-                    a.btn.btn-link(href="#/error")
-                        h2
-                            | Otherwise
-                            | &raquo;
-                p To see how the otherwise page works
+        .panel.panel-default
+            .panel-heading
+                h3 Test API Input
+            .panel-body
+                .input-group
+                    input.form-control(type="text", ng-model="test.value", placeholder="Value...")
+                    span.input-group-btn
+                        a.btn.btn-default(href="#/api/v0.1/test/{{ test.value }}") Go &raquo;
+            .panel-footer Type in a value for the Test API
+        .well
+            h2.glyphicon.glyphicon-link.middle
+            span
+                a.btn.btn-link(href="#/data/test")
+                    h2
+                        | Test Data
+                        | &raquo;
+            p To see data from Test API
+        .well
+            h2.glyphicon.glyphicon-link.middle
+            span
+                a.btn.btn-link(href="#/error")
+                    h2
+                        | Otherwise
+                        | &raquo;
+            p To see how the otherwise page works
                 
     .container
         .page-header
             h1
-                span.glyphicon.glyphicon-cloud.middle
+                a.glyphicon.glyphicon-cloud.middle(href="#/")
                 |  Arch Cloud
+        #cache
         ng-view

@@ -16,6 +16,11 @@ define [
             self = @
             @db.on "value", (snapshot) ->
                 self.snapshot = snapshot
+                sandbox.notify
+                    type: "db-ready"
+                    data:
+                        ready: true
+                        snapshot: snapshot.val()
         # mode : String, location : String, info : Object
         act: (data) ->
             unless !!@db

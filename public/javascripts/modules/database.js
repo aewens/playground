@@ -18,7 +18,14 @@
           this.db = new api(data.name);
           self = this;
           return this.db.on("value", function(snapshot) {
-            return self.snapshot = snapshot;
+            self.snapshot = snapshot;
+            return sandbox.notify({
+              type: "db-ready",
+              data: {
+                ready: true,
+                snapshot: snapshot.val()
+              }
+            });
           });
         },
         act: function(data) {
