@@ -15,6 +15,7 @@
         exports: "Firebase"
       },
       "angular": {
+        deps: ["jquery"],
         exports: "angular"
       },
       "ng-route": {
@@ -26,7 +27,7 @@
     }
   });
 
-  require(["jquery", "firebase", "corejs", "bootstrap", "angular", "modules/database", "modules/dispatcher", "modules/angular-learn"], function(jQuery, Firebase, Core, Bootstrap, Angular, mod_database, mod_dispatcher, mod_angular_learn) {
+  require(["jquery", "firebase", "corejs", "bootstrap", "angular", "modules/database", "modules/dispatcher", "modules/dashboard"], function(jQuery, Firebase, Core, Bootstrap, Angular, mod_database, mod_dispatcher, mod_dashboard) {
     Core.extend("$", jQuery);
     Core.extend("db-api", Firebase);
     Core.extend("angular", Angular);
@@ -40,7 +41,7 @@
           return $(document).ready(function() {
             Core.start("database");
             Core.start("dispatcher");
-            Core.start("angular-learn");
+            Core.start("dashboard");
             $("#ng-wait").hide(function() {
               return $(".ng-load").show();
             });

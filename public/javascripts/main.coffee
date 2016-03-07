@@ -11,6 +11,7 @@ require.config
         "firebase":
             exports: "Firebase"
         "angular":
+            deps: ["jquery"]
             exports: "angular"
         "ng-route":
             deps: ["angular"]
@@ -25,9 +26,9 @@ require [
     "angular",
     "modules/database",
     "modules/dispatcher",
-    "modules/angular-learn"
+    "modules/dashboard"
 ], (jQuery, Firebase, Core, Bootstrap, Angular,
-    mod_database, mod_dispatcher, mod_angular_learn) ->
+    mod_database, mod_dispatcher, mod_dashboard) ->
     Core.extend("$", jQuery)
     Core.extend("db-api", Firebase)
     Core.extend("angular", Angular)
@@ -42,7 +43,7 @@ require [
                 # Start cores here
                 Core.start("database")
                 Core.start("dispatcher")
-                Core.start("angular-learn")
+                Core.start("dashboard")
 
                 # So angular has time to load
                 $("#ng-wait").hide ->

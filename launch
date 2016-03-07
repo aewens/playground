@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
-#fuser -k 8123/tcp
-#coffee -wc . &
+
+echo "Killing processes..."
+kill -KILL $(ps aux | grep "[c]offee -wc" | awk '{print $2}') &> /dev/null
+kill -KILL $(ps aux | grep "[n]odemon" | awk '{print $2}') &> /dev/null
+fuser -k 8123/tcp
+echo "Loading..."
+sleep 2
+coffee -wc . &
 nodemon app.js -e js,coffee
 # supervisor -w . -x node app.js

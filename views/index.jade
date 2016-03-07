@@ -1,9 +1,7 @@
 extends layout
 
 block app
-    .container
-        .page-header
-            h1 Cloud
+    script(type="text/ng-template", id="dashboard.html")
         .jumbotron
             h1 Welcome to the Arch Cloud!
             p 
@@ -13,43 +11,52 @@ block app
                 | This service is born from the byproduct of boredom and 
                 | the constant desire to be programming. I hope you enjoy it!
             em - Austin Ewens 
-        
-        #ng-wait
-        .ng-load
-            form.well(ng-controller="NameCtrl")
-                h2 {{ data.name }}
-                .row
-                    .form-group.col-md-5
-                        input.form-control(type="text", ng-model="data.fname", value="{{data.fname}}")
-                    .form-group.col-md-5
-                        input.form-control(type="text", ng-model="data.lname", value="{{data.lname}}")
-                    .form-group.col-md-2
-                        a.btn.btn-default(ng-click="updateName()") Update Name
-                p Preview: 
-                    strong {{ data.fname }} {{ data.lname }}
-            .well(ng-controller="FlipCtrl")
-                h2 {{ flipNames()|reverse }}
-                p Flipped: 
-                    strong {{ data.fname|reverse }} ,{{ data.lname|reverse }}
-            .well(ng-controller="FrameworkCtrl")
-                h2 Search
-                .input-group
-                    span.input-group-addon.glyphicon.glyphicon-search
-                    input.form-control(type="text", ng-model="searchText")
-                table.table
-                    thead
-                        tr
-                            th Name
-                            th Language
-                    tbody
-                        tr(ng-repeat="framework in frameworks.web | filter:searchText")
-                            td {{ framework.name }}
-                            td {{ framework.lang }}
-            .dync.media-list
-                .media(dyna, name="Anonymous", text="Test 1")
-                    .media(dyna, name="Anonymous", text="Test A")
-                        .media(dyna, name="Anonymous", text="Test a")
-                .media(dyna, name="Anonymous", text="Test 2")
-                    .media(dyna, name="Anonymous", text="Test B")
-                    .media(dyna, name="Anonymous", text="Test C")
-                .media(dyna, name="Anonymous", text="Test 3")
+        .col-sm-6.col-xs-12
+            .well
+                span.h2
+                    | Module 1
+                    a.btn.btn-link(href="#/mod1")
+                        span.glyphicon.glyphicon-link
+                p A thing that does stuff and whatever
+        .col-sm-6.col-xs-12
+            .well
+                span.h2
+                    | Module 2
+                    a.btn.btn-link(href="#/mod2")
+                        span.glyphicon.glyphicon-link
+                p A thing that does stuff and whatever
+        .col-sm-6.col-xs-12
+            .well
+                span.h2
+                    | Module 3
+                    a.btn.btn-link(href="#/mod3")
+                        span.glyphicon.glyphicon-link
+                p A thing that does stuff and whatever
+        .col-sm-6.col-xs-12
+            .well
+                span.h2
+                    | Module 4
+                    a.btn.btn-link(href="#/mod4")
+                        span.glyphicon.glyphicon-link
+                p A thing that does stuff and whatever
+        .col-sm-6.col-xs-12
+            .well
+                span.h2
+                    | Module 5
+                    a.btn.btn-link(href="#/mod5")
+                        span.glyphicon.glyphicon-link
+                p A thing that does stuff and whatever
+        .col-sm-6.col-xs-12
+            .well
+                span.h2
+                    | Module 6
+                    a.btn.btn-link(href="#/mod6")
+                        span.glyphicon.glyphicon-link
+                p A thing that does stuff and whatever
+                
+    .container
+        .page-header
+            h1
+                span#cloud.glyphicon.glyphicon-cloud
+                |  Arch Cloud
+        ng-view
