@@ -20,23 +20,15 @@
               templateUrl: "dashboard.html"
             }).when("/api/v0.1/test/:value", {
               redirectTo: function(routeParams, path, search) {
-                var value, version;
+                var k, searches, v, value;
+                searches = "?";
+                for (k in search) {
+                  v = search[k];
+                  searches += k + "=" + v + "&";
+                }
+                searches = searches.slice(0, -1);
                 value = routeParams.value;
-                version = path.split("/")[2];
-                sandbox.notify({
-                  type: "db-act",
-                  data: {
-                    mode: "push",
-                    location: "api/test",
-                    info: {
-                      value: routeParams.value,
-                      version: version,
-                      search: search
-                    }
-                  }
-                });
-                console.log(value, version, search);
-                return "/";
+                return window.location = "api/v0.1/test/" + value + searches;
               }
             }).when("/data/test", {
               templateUrl: "datatest.html",
@@ -55,7 +47,7 @@
               entries: testEntries
             };
           });
-          return angular.bootstrap(document, ["dashboard"]);
+          return angular.bootstrap($("#index"), ["dashboard"]);
         },
         destroy: function() {
           return console.log("Stopping dashboard...");

@@ -33,6 +33,8 @@
 
   app.get("/", route.index);
 
+  app.get("/api/v0.1/test/:data", route.test_api);
+
   app.get("/partials/:name", route.partials);
 
   app.use(function(req, res, next) {

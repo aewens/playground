@@ -23,8 +23,9 @@ app.use express.bodyParser()
 #Setup: End
 
 #Routes
-app.get  "/", route.index
-app.get  "/partials/:name", route.partials
+app.get "/", route.index
+app.get "/api/v0.1/test/:data", route.test_api
+app.get "/partials/:name", route.partials
 
 # Handle 404
 app.use (req, res, next) ->

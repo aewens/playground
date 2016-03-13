@@ -26,22 +26,13 @@ define [
                     templateUrl: "dashboard.html"
                 .when "/api/v0.1/test/:value",
                     redirectTo: (routeParams, path, search) ->
+                        searches = "?"
+                        searches += "#{k}=#{v}&" for k,v of search
+                        searches = searches.slice(0,-1)
+
                         value = routeParams.value
-                        # Version is located in 3rd spot
-                        version = path.split("/")[2]
-                        # Send data to database in push mode to `api/test`
-                        sandbox.notify
-                            type: "db-act"
-                            data:
-                                mode: "push"
-                                location: "api/test"
-                                info:
-                                    value: routeParams.value
-                                    version: version
-                                    search: search
-                        console.log value, version, search
-                        # Return to sender
-                        return "/"
+
+                        window.location = "api/v0.1/test/#{value}#{searches}"
                 .when "/data/test",
                     templateUrl: "datatest.html"
                     controller: "DataTestCtrl"
@@ -56,7 +47,6 @@ define [
                 $scope.test =
                     entries: testEntries
 
-            # Bootstrap module to the document
-            angular.bootstrap(document, ["dashboard"])
+            angular.bootstrap($("#index"), ["dashboard"])
         destroy: ->
             console.log "Stopping dashboard..."
