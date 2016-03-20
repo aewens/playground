@@ -1,65 +1,15 @@
 extends layout
 
-block app
-    script(type="text/ng-template", id="otherwise.html")
-        .panel.panel-info
-            .panel-heading Page not found!
-            .panel-body
-                span.glyphicon.glyphicon-link.middle
-                a.btn.btn-link(href="#/") Go to home &raquo;
-    script(type="text/ng-template", id="datatest.html")
-        h1 Test Data
-        table.table
-            thead
-                tr
-                    th Value
-                    th Version
-                    th Search
-            tbody
-                tr#test-entries(ng-repeat="entry in test.entries")
-                    td {{ entry.value }}
-                    td {{ entry.version }}
-                    td {{ entry.search }}
-    script(type="text/ng-template", id="dashboard.html")
+block app        
+    .container
+        .page-header
+            h1 aewens
         .jumbotron
-            h1 Welcome to the Arch Cloud!
+            h1 Welcome to the site!
             p 
                 | Brought to you by my beloved server, 
                 em Frankenstein
                 | , the machine made from the parts of other machines. 
                 | This service is born from the byproduct of boredom and 
                 | the constant desire to be programming. I hope you enjoy it!
-            em - Austin Ewens 
-        .panel.panel-default
-            .panel-heading
-                h3 Test API Input
-            .panel-body
-                .input-group
-                    input.form-control(type="text", ng-model="test.value", placeholder="Value...")
-                    span.input-group-btn
-                        a.btn.btn-default(href="#/api/v0.1/test/{{ test.value }}") Go &raquo;
-            .panel-footer Type in a value for the Test API
-        .well
-            h2.glyphicon.glyphicon-link.middle
-            span
-                a.btn.btn-link(href="#/data/test")
-                    h2
-                        | Test Data
-                        | &raquo;
-            p To see data from Test API
-        .well
-            h2.glyphicon.glyphicon-link.middle
-            span
-                a.btn.btn-link(href="#/error")
-                    h2
-                        | Otherwise
-                        | &raquo;
-            p To see how the otherwise page works
-                
-    .container
-        .page-header
-            h1
-                a.glyphicon.glyphicon-cloud.middle(href="#/")
-                |  Arch Cloud
-        #cache
-        ng-view
+            em - Austin Ewens
