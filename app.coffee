@@ -24,7 +24,6 @@ app.use express.bodyParser()
 
 #Routes
 app.get "/", route.index
-app.get "/api/v0.1/test/:data", route.test_api
 app.get "/partials/:name", route.partials
 
 # Handle 404
